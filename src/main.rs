@@ -29,7 +29,7 @@ impl App {
     }
      fn handle_key_event(&mut self, key_event: KeyEvent) {
         match key_event.code {
-            KeyCode::Char('q') => self.exit(),
+            KeyCode::Char('q') | KeyCode::Esc => self.exit(),
             KeyCode::Left => self.decrement_counter(),
             KeyCode::Right => self.increment_counter(),
             _ => {}
@@ -71,6 +71,8 @@ impl Widget for &App {
             "<Right>".blue().bold(),
             " Quit ".into(),
             "<Q> ".blue().bold(),
+            " or ".into(),
+            "<Esc> ".blue().bold(),
         ]);
         let block = Block::bordered()
             .title(title.centered())
